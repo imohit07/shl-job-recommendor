@@ -6,7 +6,7 @@ Conversational AI agent for SHL Individual Test Solutions recommendations. Produ
 
 ## Features
 
-✅ **Conversational AI** - Multi-turn dialogue with Claude AI  
+✅ **Conversational AI** - Multi-turn dialogue with Groq AI  
 ✅ **Intelligent Retrieval** - TF-IDF + cosine similarity for catalog search  
 ✅ **Comprehensive Logging** - Structured logging for monitoring and debugging  
 ✅ **Production Security** - CORS restrictions, input validation, error handling  
@@ -89,8 +89,7 @@ Send messages and receive recommendations.
 
 ### Prerequisites
 - Python 3.12+
-- Groq API key from [console.anthropic.com](https://console.anthropic.com)
-
+- Groq API key from [console.Groq.com](https://console.groq.com).
 ### Local Development
 
 1. **Install dependencies:**
@@ -100,7 +99,7 @@ Send messages and receive recommendations.
 
 2. **Set environment variable:**
    ```bash
-   export ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxx
+   export Groq_API_KEY=sk-ant-xxxxxxxxxxxxx
    ```
 
 3. **Start server:**
@@ -129,14 +128,14 @@ Send messages and receive recommendations.
 2. **Run container:**
    ```bash
    docker run -p 8000:8000 \
-     -e ANTHROPIC_API_KEY="sk-ant-..." \
+     -e Groq_API_KEY="sk-ant-..." \
      -e ENV="production" \
      shl-recommender:latest
    ```
 
 3. **Or use Docker Compose:**
    ```bash
-   ANTHROPIC_API_KEY=sk-ant-... docker-compose up
+   Groq_API_KEY=sk-ant-... docker-compose up
    ```
 
 ## Production Deployment
@@ -148,7 +147,7 @@ Send messages and receive recommendations.
 1. Push to GitHub
 2. Go to [render.com](https://render.com) → New Web Service
 3. Connect your GitHub repo
-4. Set environment variable: `ANTHROPIC_API_KEY=sk-ant-...`
+4. Set environment variable: `Groq_API_KEY=sk-ant-...`
 5. Set `ENV=production`
 6. Deploy
 
@@ -158,7 +157,7 @@ Configure via environment variables (see [.env.example](.env.example)):
 
 | Variable | Default | Notes |
 |----------|---------|-------|
-| `ANTHROPIC_API_KEY` | - | **Required** API key |
+| `Groq_API_KEY` | - | **Required** API key |
 | `ENV` | development | Set to `production` for production |
 | `PORT` | 8000 | Server port |
 | `HOST` | 0.0.0.0 | Bind address |
@@ -192,7 +191,7 @@ Logs are output to stdout in structured format:
 - **Chat Latency**: Response time percentiles (p50, p95, p99)
 - **Error Rate**: 4xx and 5xx response rates
 - **Catalog Size**: Number of available assessments
-- **API Quota**: Anthropic API usage
+- **API Quota**: Groq API usage
 
 ### Example Monitoring Setup
 ```bash
@@ -215,7 +214,7 @@ docker run --log-driver awslogs \
 ### Service fails to start
 ```bash
 # Check API key is set
-echo $ANTHROPIC_API_KEY
+echo $Groq_API_KEY
 
 # Check logs
 docker logs <container-id>
@@ -228,7 +227,7 @@ CORS_ORIGINS="https://frontend.com,https://api.com" python main.py
 ```
 
 ### High latency
-1. Check [status.anthropic.com](https://status.anthropic.com)
+1. Check [status.Groq.com]
 2. Add caching layer (Redis)
 3. Use load balancer with multiple instances
 
@@ -236,7 +235,7 @@ CORS_ORIGINS="https://frontend.com,https://api.com" python main.py
 
 - `fastapi>=0.115.0` - Web framework
 - `uvicorn>=0.31.0` - ASGI server
-- `anthropic>=0.39.0` - Claude API client
+- `Groq>=0.39.0` - Groq API client
 - `scikit-learn>=1.6.1` - ML for catalog retrieval
 - `numpy>=1.26.4` - Numerical computing
 - `pydantic>=2.9.2` - Data validation
