@@ -89,7 +89,7 @@ Send messages and receive recommendations.
 
 ### Prerequisites
 - Python 3.12+
-- Anthropic API key from [console.anthropic.com](https://console.anthropic.com)
+- Groq API key from [console.anthropic.com](https://console.anthropic.com)
 
 ### Local Development
 
